@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thermal Depth Estimation for ORB-SLAM3</title>
+
+<style>
+body {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fb;
+    color: #222;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 40px 20px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2.2em;
+    margin-bottom: 10px;
+}
+
+.authors {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.1em;
+}
+
+.links {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.links a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: white;
+    background: #1f4e79;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 0.9em;
+}
+
+.section {
+    margin-top: 60px;
+}
+
+.section h2 {
+    border-bottom: 2px solid #1f4e79;
+    padding-bottom: 5px;
+}
+
+img {
+    width: 100%;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.highlight {
+    background: #e8f0fa;
+    padding: 10px;
+    border-left: 4px solid #1f4e79;
+    margin: 20px 0;
+}
+
+pre {
+    background: #111;
+    color: #0f0;
+    padding: 15px;
+    overflow-x: auto;
+    border-radius: 6px;
+}
+
+.footer {
+    text-align: center;
+    margin-top: 80px;
+    font-size: 0.9em;
+    color: #666;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>
+Thermal Image Refinement with Depth Estimation<br>
+using Recurrent Networks for Monocular ORB-SLAM3
+</h1>
+
+<div class="authors">
+Hürkan Şahin, Huy Xuan Pham, Van Huyen Dang,<br>
+Alper Yegenoglu, Erdal Kayacan<br>
+Paderborn University
+</div>
+
+<div class="links">
+<a href="paper.pdf">📄 Paper</a>
+<a href="https://github.com/yourusername/repo">💻 Code</a>
+<a href="#">📊 Dataset</a>
+</div>
+
+<div class="section">
+<h2>Abstract</h2>
+<p>
+We propose a lightweight thermal-to-depth estimation framework for robust UAV localization in GPS-denied and low-light environments.
+A thermal refinement network (T-RefNet) enhances 16-bit thermal inputs, followed by recurrent modeling (ConvGRU or Reservoir Computing)
+to enforce temporal consistency. The predicted depth maps are integrated into ORB-SLAM3, enabling thermal-only SLAM with metric scale recovery.
+Experiments on both radiometric (VIVID++) and non-radiometric datasets demonstrate state-of-the-art depth accuracy and sub-0.4 m trajectory error in UAV experiments.
+</p>
+</div>
+
+<div class="section">
+<h2>Method Overview</h2>
+<p>
+Our pipeline refines raw thermal images, predicts temporally consistent depth maps, and integrates them directly into ORB-SLAM3.
+</p>
+<img src="fig1.png" alt="Pipeline Overview">
+</div>
+
+<div class="section">
+<h2>Radiometric vs Non-Radiometric Thermal</h2>
+<p>
+Non-radiometric thermal cameras introduce auto-scaling and histogram shifts, which degrade feature consistency.
+T-RefNet stabilizes structure and preserves edges for reliable SLAM.
+</p>
+<img src="fig3.png" alt="Thermal Comparison">
+</div>
+
+<div class="section">
+<h2>Depth Estimation Results</h2>
+
+<div class="highlight">
+<strong>Best Performance:</strong><br>
+AbsRel = 0.063 (EfficientNet-B0 + ConvGRU)<br>
+AbsRel = 0.076 (Non-radiometric dataset)
+</div>
+
+<img src="fig4.png" alt="Depth Results">
+</div>
+
+<div class="section">
+<h2>Localization Experiments</h2>
+<p>
+Thermal-only ORB-SLAM3 maintains robust tracking in bright, dark, and UAV corridor scenarios.
+Mean trajectory error remains below 0.4 m in UAV experiments.
+</p>
+
+<img src="fig6.png" alt="Bright Scenario">
+<img src="fig7.png" alt="Dark Circular Motion">
+<img src="fig8.png" alt="UAV Corridor">
+</div>
+
+<div class="section">
+<h2>BibTeX</h2>
+<pre>
+@article{sahin2026thermal,
+  title={Thermal Image Refinement with Depth Estimation using Recurrent Networks for Monocular ORB-SLAM3},
+  author={Sahin, Hurkan and Pham, Huy Xuan and Dang, Van Huyen and Yegenoglu, Alper and Kayacan, Erdal},
+  year={2026}
+}
+</pre>
+</div>
+
+<div class="footer">
+© 2026 Paderborn University – Automatic Control Group (RAT)
+</div>
+
+</div>
+</body>
+</html>
