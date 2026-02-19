@@ -158,8 +158,10 @@ Experiments on both radiometric (VIVID++) and non-radiometric datasets demonstra
 <div class="section">
 <h2>Method Overview</h2>
 <p>
-Our pipeline refines raw thermal images, predicts temporally consistent depth maps, and integrates them directly into ORB-SLAM3.
-</p>
+Overview of the proposed thermal depth estimation pipeline. A raw 16-bit long-wave infrared (LWIR) image is first refined and normalized by the T-RefNet module, producing both a normalized input for depth predic-
+tion and a color-mapped image for robust ORB-SLAM3 feature extraction. The encoder backbone extracts multi-scale features, which are processed by recurrent blocks (ConvGRU [9] or reservoir computing (RC) [10]) to
+enforce temporal consistency. Finally, the decoder outputs dense depth maps that provide metric scale and temporally consistent depth priors to ORB- SLAM3, enabling improved initialization, mapping accuracy, and real-time
+tracking performance</p>
 
 <img src="pipeline.png" alt="Pipeline Overview" class="pipeline-img">
 </div>
