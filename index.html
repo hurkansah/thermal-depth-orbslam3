@@ -57,7 +57,7 @@ h1 {
     padding-bottom: 5px;
 }
 
-img {
+.section img {
     width: 100%;
     border-radius: 8px;
     margin-top: 20px;
@@ -76,6 +76,33 @@ pre {
     padding: 15px;
     overflow-x: auto;
     border-radius: 6px;
+}
+
+/* ===== RESULTS SECTION (Modern Layout) ===== */
+
+.results-container {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.result-card {
+    text-align: center;
+    width: 420px;
+}
+
+.result-card h3 {
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+.result-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
 }
 
 .footer {
@@ -115,8 +142,9 @@ We propose a lightweight thermal-to-depth estimation framework for robust UAV lo
 A thermal refinement network (T-RefNet) enhances 16-bit thermal inputs, followed by recurrent modeling (ConvGRU or Reservoir Computing)
 to enforce temporal consistency. The predicted depth maps are integrated into ORB-SLAM3, enabling thermal-only SLAM with metric scale recovery.
 Experiments on both radiometric (VIVID++) and non-radiometric datasets demonstrate state-of-the-art depth accuracy and sub-0.4 m trajectory error in UAV experiments.
-<img src="drone.gif" alt="Overview">
 </p>
+
+<img src="drone.gif" alt="Overview">
 </div>
 
 <div class="section">
@@ -124,25 +152,27 @@ Experiments on both radiometric (VIVID++) and non-radiometric datasets demonstra
 <p>
 Our pipeline refines raw thermal images, predicts temporally consistent depth maps, and integrates them directly into ORB-SLAM3.
 </p>
+
 <img src="pipeline.png" alt="Pipeline Overview">
 </div>
-
 
 <div class="section">
 <h2>Depth Estimation Results</h2>
 
-<table align="center">
-  <tr>
-    <td align="center">
-      <b>Results for Vivid++</b><br>
-      <img src="vivid.gif" height="300">
-    </td>
-    <td align="center">
-      <b>Results for our dataset</b><br>
-      <img src="rat.gif" height="300">
-    </td>
-  </tr>
-</table>
+<div class="results-container">
+
+  <div class="result-card">
+    <h3>Results for Vivid++</h3>
+    <img src="vivid.gif" alt="Vivid++ Results">
+  </div>
+
+  <div class="result-card">
+    <h3>Results for our dataset</h3>
+    <img src="rat.gif" alt="RAT Dataset Results">
+  </div>
+
+</div>
+</div>
 
 <div class="section">
 <h2>BibTeX</h2>
